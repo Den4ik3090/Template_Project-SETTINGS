@@ -1,13 +1,38 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// Custom styles
+/* ===========================================================
+    1. Сторонние библиотеки (Vendor)
+   =========================================================== */
+// Стили библиотек загружаем первыми
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-// Main styles
+/* ===========================================================
+    2. Глобальные стили
+   =========================================================== */
+// Tailwind и базовые стили (reset, variables и т.д.)
+import './styles/tailwind.css';
 import './styles/main.scss';
-import { greeting } from './app/greeting';
-import './styles/buttons.scss';
-import './styles/main_section.scss';
-console.log(greeting);
 
-import { setupMainBlock } from './app/main-block';
-setupMainBlock();
+/* ===========================================================
+    3. Стили компонентов
+   =========================================================== */
+// Локальные стили для конкретных блоков
+
+/* ===========================================================
+    4. Логика приложения (Scripts)
+   =========================================================== */
+// import { greeting } from './app/greeting';
+// import { setupMainBlock } from './app/main-block';
+// import './tasks/Number-1/01_Lesson.js';
+
+// Lesson-2
+import './tasks/Nimber-2/02_lesson.js';
+import './tasks/Nimber-2/02_lessons-style.scss';
+
+/* ===========================================================
+    5. Инициализация / Запуск
+   =========================================================== */
+// console.log(greeting);
+
+// Запуск основной функции
+// setupMainBlock();

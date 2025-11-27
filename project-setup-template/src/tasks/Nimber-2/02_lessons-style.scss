@@ -1,0 +1,71 @@
+
+@mixin flexible() {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.container.mt-5{
+  display: flex;
+  justify-content: center;
+}
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center
+}
+.header-container{
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.setting-container {
+  @include flexible();
+  height: 600px;
+  max-width: 500px;
+}
+.setting-title {
+  display: flex;
+  margin: 12px 20px;
+  align-items: center;
+}
+.setting-title h3 {
+  margin: 0 10px;
+}
+.fa-solid {
+  font-size: 20px;
+}
+.panel {
+  position: relative;
+  border-radius: 20px;
+  background-color: 238, 238, 238;
+  height: 48px;
+  box-shadow:
+    -5px -5px 30px rgba(255, 255, 255, 0.267),
+    2px 2px 60px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  transition: flex 0.5s linear;
+  margin-bottom: 10px;
+}
+
+.panel.active {
+  flex-grow: 5;
+}
+.panel.active .setting-title {
+  color: rgb(248, 16, 217);
+}
+
+.setting-content {
+  opacity: 0;
+  margin: 16px 20px;
+  line-height: 28px;
+  transition: opacity 0.2s ease-in;
+}
+.panel.active .setting-content {
+  opacity: 1;
+  transition: opacity 0.2s ease-in 0.3s;
+}

@@ -11,9 +11,13 @@ module.exports = merge(common, {
     hot: true,
     open: true,
     watchFiles: ['src/**/*'],
+    // Исправление: client перемещен внутрь devServer
+    client: {
+      overlay: true, // Включить оверлей ошибок в браузере
+    },
   },
-  stats: {
-    warnings: false,
-    errorDetails: false,
-  },
+  // stats: {
+  //   warnings: false,
+  //   errorDetails: false,
+  // },
 });

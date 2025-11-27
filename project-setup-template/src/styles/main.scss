@@ -1,6 +1,70 @@
-@import "~bootstrap/scss/bootstrap";
-  body {
-    background-color: #ccc5c5
-    ;
-  }
-  @import 'variables';
+/* ======1. CONFIGURATION & HELPERS=========== */
+
+// Сначала импортируем переменные, чтобы переопределять ими стили Bootstrap или использовать ниже
+@import 'variables';
+
+/* Если вы используете Bootstrap, импортируйте его здесь, ПОСЛЕ переменных */
+// @import "~bootstrap/scss/bootstrap";
+
+
+/* =====2. GLOBAL RESET & BOX-SIZING========= */
+
+// Устанавливаем "честную" модель блочной верстки для всех элементов
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ======3. BASE STYLES (Body & Layout)=========*/
+
+body {
+  // Сброс отступов
+  margin: 0;
+  
+  // Растягиваем body на всю высоту экрана
+  min-height: 100vh;
+
+  // Настройки шрифта
+  font-family: sans-serif, system-ui; // Добавил дефолтный шрифт, чтобы текст не был с засечками
+  font-size: 20px;
+  color: #333; // Чуть мягче черного цвета для текста
+
+  // Flex-центрирование (удобно для демо-заданий)
+  display: flex;
+  flex-direction: column;
+  align-items: center;      // Центрируем по горизонтали
+  justify-content: center; // Контент начинается сверху
+
+  // Фон страницы (исправлена ошибка синтаксиса)
+  background-color: #eeeeee; 
+}
+
+
+/* ======4. TYPOGRAPHY========== */
+
+h2 {
+  margin-top: 20px; // Небольшой отступ сверху
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+
+/* =====5. COMPONENTS & UTILITIES===================== */
+
+.main_btn {
+  width: 200px;
+  // Можно добавить курсор, чтобы было понятно, что это кнопка
+  cursor: pointer; 
+}
+
+/* Здесь можно добавить стили для контейнера задания */
+#app {
+  width: 100%;
+  max-width: 800px; // Ограничиваем ширину контента
+  padding: 20px;
+}

@@ -1,13 +1,13 @@
 // Import Color Variables
 @import 'variables';
 // ---------------------------------
-.header__button-open {
+.header__button {
   width: 150px;
   height: 40px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
-  background-color: var(--bs-primary-text-emphasis);
+  background-color: var(--bs-cyan);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
