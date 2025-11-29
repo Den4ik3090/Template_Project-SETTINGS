@@ -1,8 +1,25 @@
-// Коллекция цветов
+// 1. Палитра (Примитивы) - никогда не используем напрямую в компонентах
+$base-blue:   #007bff;
+$base-gray:   #6c757d;
+$base-orange: #ff5722;
+$base-green:  #28a745;
+$base-red:    #dc3545;
 
-$primary-color: #007bff;
-$secondary-color: #6c757d;
-$accent-color: #ff5722;
-$success-color: #28a745;
-$error-color: #dc3545;
-$bg-main: #f8f9fa;
+// 2. Семантические переменные (CSS Custom Properties)
+// Это позволяет менять тему "на лету" без пересборки Sass
+:root {
+  --primary:     #{$base-blue};
+  --secondary:   #{$base-gray};
+  --accent:      #{$base-orange};
+  --success:     #{$base-green};
+  --error:       #{$base-red};
+  
+  --bg-main:     #f8f9fa;
+  --bg-surface:  #ffffff;
+  --text-main:   #212529;
+}
+
+// 3. Sass-ярлыки для удобства (опционально)
+$primary: var(--primary);
+$accent:  var(--accent);
+$bg-main: var(--bg-main);

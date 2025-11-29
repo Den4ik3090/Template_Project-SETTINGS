@@ -1,7 +1,8 @@
 /* ======1. CONFIGURATION & HELPERS=========== */
 
 // Сначала импортируем переменные, чтобы переопределять ими стили Bootstrap или использовать ниже
-@import 'variables';
+@import './variables';
+@import './gradient';
 
 /* Если вы используете Bootstrap, импортируйте его здесь, ПОСЛЕ переменных */
 // @import "~bootstrap/scss/bootstrap";
@@ -63,8 +64,9 @@ h2 {
 }
 
 /* Здесь можно добавить стили для контейнера задания */
-#app {
-  width: 100%;
-  max-width: 800px; // Ограничиваем ширину контента
-  padding: 20px;
-}
+// #app {
+//   // width: 100%;
+//   // width: 1500px; // Ограничиваем ширину контента
+//   // padding: 20px;
+//   display: flex;
+// }

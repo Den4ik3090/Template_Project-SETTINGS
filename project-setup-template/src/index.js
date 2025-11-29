@@ -26,8 +26,12 @@ import './styles/main.scss';
 // import './tasks/Number-1/01_Lesson.js';
 
 // Lesson-2
-import './tasks/Nimber-2/02_lesson.js';
-import './tasks/Nimber-2/02_lessons-style.scss';
+// import './tasks/Nimber-2/02_lesson.js';
+// import './tasks/Nimber-2/02_lessons-style.scss';
+
+// Lesson-3
+import './tasks/Number-3/03_lessons';
+import './tasks/Number-3/03_lessons_style.scss';
 
 /* ===========================================================
     5. Инициализация / Запуск

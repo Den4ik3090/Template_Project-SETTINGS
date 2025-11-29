@@ -1,0 +1,43 @@
+.modern-gradient {
+  // Базовый фон (подстраховка)
+  background-color: var(--bg-main);
+
+  // Магия 2025: Множественные радиальные градиенты вместо одного линейного
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    
+  // Добавляем "стеклянный" эффект и шум (Noise)
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(0, 123, 255, 0.4), transparent 25%),
+      radial-gradient(circle at 80% 20%, rgba(255, 87, 34, 0.3), transparent 25%);
+    filter: blur(60px); /* Сильное размытие создает эффект Mesh */
+    z-index: 0;
+    animation: gradient-move 10s infinite alternate;
+  }
+}
+
+@keyframes gradient-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: scale(102%); }
+}
+
+@mixin mesh-gradient {
+  background-image: 
+    radial-gradient(at 0% 20%, rgba(255, 107, 107, 1.0) 0, transparent 90%), 
+    radial-gradient(at 14% 60%, rgba(240, 101, 149, 1.0)  0, transparent 50%),
+    radial-gradient(at 55% 100%, rgb(100, 63, 209) 0, transparent 50%) ;
+    
+  // ... ваш код
+}
