@@ -1,0 +1,66 @@
+body{
+
+}
+.container_input{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.temperature-block{
+  padding: 10px;
+  border-radius: 10px;
+}
+.conditions-inner {
+  height: 100px;
+  display: inline-block;
+  white-space: nowrap;
+}
+.conditions{
+  display: flex;
+  align-items:center;
+  gap: 20px;
+}
+.tb_block{
+  background-color: rgba(120, 137, 192, 0.377);
+  border-radius:30px;
+  width: 800px;
+  height: 400px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+}
+
+.container_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.container_input {
+  display: flex;
+  justify-content: center;
+}
+.temperature-block {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.temperature-block h2 {
+  font-size: 40px;
+}
+.text_title {
+  font-size: 30px;
+  background-color: rgba(224, 255, 255, 0.288);
+  margin-bottom: 10px;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.clear__btn{
+  margin-top: 50px;
+  width: 100px;
+}
+

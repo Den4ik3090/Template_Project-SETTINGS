@@ -30,8 +30,16 @@ import './styles/main.scss';
 // import './tasks/Nimber-2/02_lessons-style.scss';
 
 // Lesson-3
-import './tasks/Number-3/03_lessons';
-import './tasks/Number-3/03_lessons_style.scss';
+// import './tasks/Number-3/03_lessons';
+// import './tasks/Number-3/03_lessons_style.scss';
+
+// Lesson-4
+// import './tasks/Number-4/04_lessons';
+// import './tasks/Number-4/04_lessons_style.scss';
+
+//Wheather APP
+import './tasks/Weather/weather_script';
+import './tasks/Weather/weather_style.scss';
 
 /* ===========================================================
     5. Инициализация / Запуск

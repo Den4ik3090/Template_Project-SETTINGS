@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -19,6 +20,16 @@ module.exports = {
     open: true,
   },
   plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          // Откуда брать файлы (твоя папка с иконками)
+          from: 'src/assets/images/wheather',
+          // Куда копировать внутри папки dist
+          to: 'assets/images/wheather',
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
