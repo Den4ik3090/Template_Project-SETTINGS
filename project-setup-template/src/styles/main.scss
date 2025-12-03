@@ -34,13 +34,13 @@ body {
   color: #333; // Чуть мягче черного цвета для текста
 
   // Flex-центрирование (удобно для демо-заданий)
-  display: flex;
-  flex-direction: column;
-  align-items: center;      // Центрируем по горизонтали
-  justify-content: center; // Контент начинается сверху
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;      // Центрируем по горизонтали
+  // justify-content: center; // Контент начинается сверху
 
   // Фон страницы (исправлена ошибка синтаксиса)
-  background-color: oklch(70% 0.14 250);
+  background-color: oklch(88.204% 0.00304 264.765);
 }
 
 
@@ -58,11 +58,7 @@ h2 {
 
 /* =====5. COMPONENTS & UTILITIES===================== */
 
-.main_btn {
-  width: 200px;
-  // Можно добавить курсор, чтобы было понятно, что это кнопка
-  cursor: pointer; 
-}
+
 
 /* Здесь можно добавить стили для контейнера задания */
 // #app {

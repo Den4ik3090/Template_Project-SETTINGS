@@ -53,7 +53,7 @@ async function getWheather(city) {
             <span class="temperature">${Math.floor(data.currentConditions.temp)}°C</span>
           </p>
           <span class="condition_inner">
-        <p class="conditions">Погода в городе: ${data.currentConditions.conditions} <img src="../../assets/images/wheather/${data.currentConditions.icon}.png" /></p>
+        <p class="conditions">${data.currentConditions.conditions} <img src="../../assets/images/wheather/${data.currentConditions.icon}.png" /></p>
           </span>
           <button class="clear__btn btn btn-primary">Очистить</button>
         </div>

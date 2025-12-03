@@ -1,12 +1,23 @@
 body{
 
 }
+
+  @font-face {
+    font-family: 'journalism2';
+    src: url(../../assets/fonts/journalism2.ttf);
+  }
+h2{
+  // font-family: 'journalism2';
+  font-size: 40px;
+
+}
 .container_input{
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 .temperature-block{
+  font-family: 'journalism2';
   padding: 10px;
   border-radius: 10px;
 }
@@ -15,11 +26,7 @@ body{
   display: inline-block;
   white-space: nowrap;
 }
-.conditions{
-  display: flex;
-  align-items:center;
-  gap: 20px;
-}
+
 .tb_block{
   background-color: rgba(120, 137, 192, 0.377);
   border-radius:30px;
@@ -50,17 +57,24 @@ body{
   flex-direction: column;
 }
 .temperature-block h2 {
-  font-size: 40px;
+  font-size: 60px;
 }
 .text_title {
-  font-size: 30px;
-  background-color: rgba(224, 255, 255, 0.288);
+  font-size: 40px;
+  background-color: rgba(244, 245, 245, 0.288);
+  color:white;
   margin-bottom: 10px;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 5px 50px;
 }
 .clear__btn{
   margin-top: 50px;
   width: 100px;
 }
-
+.conditions{
+  display: flex;
+  align-items:center;
+  gap: 20px;
+  font-size: 40px;
+  font-weight: bolder;
+}
