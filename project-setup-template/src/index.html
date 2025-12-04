@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Лучшая кофейня в городе. Свежий кофе и уютная атмосфера." />
     <title>Coffee Shop | Bean Scene</title>
-    <!-- Здесь будет подключение вашего собранного CSS (Webpack) или Bootstrap CDN -->
   </head>
   <body>
-    <!-- HEADER: Используем тег header вместо div -->
+    <!-- HEADER -->
     <header class="header">
-      <!-- NAV: Семантический тег nav -->
       <nav class="navbar container-fluid px-5 px-md-5 py-2 py-md-4">
         <!-- Logo Block -->
         <div class="navbar__logo">
@@ -30,7 +28,7 @@
               <a href="#" class="navbar__link btn">Домой</a>
             </li>
             <li class="navbar__item">
-              <a href="#" class="navbar__link btn">Меню</a>
+              <a href="#menu" class="navbar__link btn">Меню</a>
             </li>
             <li class="navbar__item">
               <a href="#" class="navbar__link btn">О нас</a>
@@ -46,8 +44,40 @@
           <button type="button" class="btn btn-warning btn-sm navbar__btn">Sign In</button>
           <button type="button" class="btn btn-warning btn-sm navbar__btn">Sign Up</button>
         </div>
+
+        <!-- Burger -->
+        <button
+          class="burger d-inline-flex d-md-none"
+          id="burgerBtn"
+          type="button"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
     </header>
+
+    <!-- Mobile menu -->
+    <div class="navbar__menu-burger d-none" id="mobileMenu">
+      <ul class="navbar__list-burger list-unstyled d-flex m-0">
+        <li class="navbar__item">
+          <a href="#" class="navbar__link_burger btn">Домой</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#menu" class="navbar__link_burger btn">Меню</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link_burger btn">О нас</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link_burger btn">Контакты</a>
+        </li>
+      </ul>
+    </div>
 
     <main class="main">
       <!-- HERO SECTION -->
@@ -58,38 +88,43 @@
             <p class="hero__subtitle text-uppercase small">
               Мы позаботимся о том, чтобы ваш день начинался с вкусного
             </p>
-            <h1 class="hero__title display-4 fw-bold mb-3">Coffee</h1>
-            <p class="hero__description mb-4">
+            <h1 class="hero__title display-4 fw-bold mb-5 mt-5">Coffee</h1>
+            <p class="hero__description mb-4 col-md-10 mt-2">
               Краткое описание, пару строк текста про сервис или сайт, почему этот кофе особенный.
             </p>
             <div class="hero__actions d-flex justify-content-center justify-content-md-start gap-3">
-              <a href="#menu" class="btn btn-warning hero__btn hero__btn--primary">ЗАКАЗАТЬ</a>
+              <a href="#menu" class="btn btn-warning hero__btn hero__btn--primary"> ЗАКАЗАТЬ </a>
               <a
-                href="#about"
+                href="#menu"
                 class="btn btn-danger btn-outline-light hero__btn hero__btn--secondary"
-                >МЕНЮ</a
               >
+                МЕНЮ
+              </a>
             </div>
           </div>
 
-          <!-- Hero Image Placeholder (если будет фон или картинка) -->
+          <!-- Hero Image Placeholder -->
           <div class="col-12 col-md-6 hero__media">
-            <!-- Пустой блок для баланса сетки или фонового изображения -->
+            <!-- сюда можно поставить фоновую картинку через CSS -->
           </div>
         </div>
       </section>
 
-      <!-- DISCOVER SECTION (Бывший main__block) -->
+      <!-- DISCOVER SECTION -->
       <section class="discover container-fluid">
+        <figure>
+          <img src="./assets/images/lesson_5/coffee_blast.png" class="img_blast d-md-none" alt="" />
+        </figure>
         <div class="row align-items-center">
           <!-- Text Block -->
           <div class="col-12 col-md-6 discover__content">
             <h2 class="discover__title">Discover the best coffee</h2>
+
             <p class="discover__text">
-              Bean Scene is a coffee shop that provides you with quality coffee that helps boost
-              your productivity and helps build your mood. Having a cup of coffee is good, but
-              having a cup of real coffee is greater. There is no doubt that you will enjoy this
-              coffee more than others you have ever tasted.
+              Наше кафе «Птички» варит по‑настоящему хороший кофе, который мягко подталкивает к
+              продуктивности и поднимает настроение на весь день. Каждая чашка не просто вкусная —
+              она приготовлена так, чтобы вы почувствовали разницу с любым другим кофе, который
+              пробовали раньше.
             </p>
             <button type="button" class="btn btn-warning discover__btn">Подробнее</button>
           </div>
@@ -102,19 +137,18 @@
               alt="Cup of coffee with latte art"
               loading="lazy"
             />
-            <!-- Декоративный элемент можно вынести CSS-ом или оставить так -->
-            <!-- <img src="./assets/images/lesson_5/coffee_blast.png" class="discover__decor position-absolute start-0 bottom-0" alt="" /> -->
           </div>
         </div>
       </section>
 
       <!-- MENU SECTION -->
-      <section class="menu py-5">
+      <section class="menu py-5" id="menu">
         <div class="container text-center">
           <div class="menu__header mb-5">
-            <h2 class="menu__title">Enjoy a new blend of coffee style</h2>
+            <h2 class="menu__title">Попробуйте кофе в новом, особенном формате.</h2>
             <p class="menu__subtitle">
-              Explore all flavours of coffee with us. There is always a new cup worth experiencing.
+              Попробуйте все оттенки вкуса нашего кофе — у нас всегда найдётся новая чашка, которую
+              стоит открыть для себя.
             </p>
           </div>
 
@@ -124,22 +158,23 @@
               <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="product-card__img-wrapper card-img-top-wrapper">
                   <img
-                    src="#"
+                    src="./assets/images/lesson_5/menu/Cappuchino.png"
                     class="card-img-top product-card__img"
                     alt="Cappuccino cup"
                     loading="lazy"
                   />
                 </div>
-                <div class="card-body d-flex flex-column align-items-center product-card__body">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Cappuccino</h3>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Капучино</h3>
                   <p class="card-text text-muted small mb-2 product-card__desc">
-                    Coffee 50% | Milk 50%
+                    Кофе 50% | Молоко 50%
                   </p>
-                  <span class="fw-bold mb-3 product-card__price">$8.50</span>
-                  <div class="mt-auto">
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 200руб </span>
                     <button
                       type="button"
-                      class="btn btn-warning rounded-pill px-4 fw-bold text-dark product-card__btn"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
                     >
                       Order Now
                     </button>
@@ -148,27 +183,28 @@
               </div>
             </article>
 
-            <!-- Product Card: Chai Latte -->
+            <!-- Product Card: Hot Chocolate -->
             <article class="col-12 col-md-6 col-lg-3">
               <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="product-card__img-wrapper card-img-top-wrapper">
                   <img
-                    src="#"
+                    src="./assets/images/lesson_5/menu/Latte.png"
                     class="card-img-top product-card__img"
                     alt="Chai Latte cup"
                     loading="lazy"
                   />
                 </div>
-                <div class="card-body d-flex flex-column align-items-center product-card__body">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Chai Latte</h3>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Горячий шоколад</h3>
                   <p class="card-text text-muted small mb-2 product-card__desc">
-                    Coffee 50% | Milk 50%
+                    Эспрессо 40мл | Молоко 120мл
                   </p>
-                  <span class="fw-bold mb-3 product-card__price">$8.50</span>
-                  <div class="mt-auto">
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 250руб </span>
                     <button
                       type="button"
-                      class="btn btn-warning rounded-pill px-4 fw-bold text-dark product-card__btn"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
                     >
                       Order Now
                     </button>
@@ -182,22 +218,23 @@
               <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="product-card__img-wrapper card-img-top-wrapper">
                   <img
-                    src="#"
+                    src="./assets/images/lesson_5/menu/Mockiato.png"
                     class="card-img-top product-card__img"
                     alt="Macchiato cup"
                     loading="lazy"
                   />
                 </div>
-                <div class="card-body d-flex flex-column align-items-center product-card__body">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Macchiato</h3>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Макиато</h3>
                   <p class="card-text text-muted small mb-2 product-card__desc">
-                    Coffee 50% | Milk 50%
+                    Кофе 70% | Молоко 30%
                   </p>
-                  <span class="fw-bold mb-3 product-card__price">$8.50</span>
-                  <div class="mt-auto">
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 300руб </span>
                     <button
                       type="button"
-                      class="btn btn-warning rounded-pill px-4 fw-bold text-dark product-card__btn"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
                     >
                       Order Now
                     </button>
@@ -211,23 +248,141 @@
               <div class="card h-100 border-0 shadow-sm product-card">
                 <div class="product-card__img-wrapper card-img-top-wrapper">
                   <img
-                    src="#"
+                    src="./assets/images/lesson_5/menu/Espresso.png"
                     class="card-img-top product-card__img"
                     alt="Espresso cup"
                     loading="lazy"
                   />
                 </div>
-                <div class="card-body d-flex flex-column align-items-center product-card__body">
-                  <!-- Исправлена опечатка Expresso -> Espresso -->
-                  <h3 class="card-title fw-bold text-dark product-card__title">Espresso</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Coffee 50% | Milk 50%
-                  </p>
-                  <span class="fw-bold mb-3 product-card__price">$8.50</span>
-                  <div class="mt-auto">
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Эспрессо</h3>
+                  <p class="card-text text-muted small mb-2 product-card__desc">Кофе 100%</p>
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 350руб </span>
                     <button
                       type="button"
-                      class="btn btn-warning rounded-pill px-4 fw-bold text-dark product-card__btn"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                    >
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Product Card: Matcha -->
+            <article class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 border-0 shadow-sm product-card">
+                <div class="product-card__img-wrapper card-img-top-wrapper">
+                  <img
+                    src="./assets/images/lesson_5/menu/Latte.png"
+                    class="card-img-top product-card__img"
+                    alt="Chai Latte cup"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Матча</h3>
+                  <p class="card-text text-muted small mb-2 product-card__desc">
+                    Кофе 50% | Молоко 50%
+                  </p>
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 200руб </span>
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                    >
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Product Card: Latte -->
+            <article class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 border-0 shadow-sm product-card">
+                <div class="product-card__img-wrapper card-img-top-wrapper">
+                  <img
+                    src="./assets/images/lesson_5/menu/Latte.png"
+                    class="card-img-top product-card__img"
+                    alt="Chai Latte cup"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Латте</h3>
+                  <p class="card-text text-muted small mb-2 product-card__desc">
+                    Кофе 50% | Молоко 50%
+                  </p>
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 180руб </span>
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                    >
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Product Card: Double Espresso -->
+            <article class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 border-0 shadow-sm product-card">
+                <div class="product-card__img-wrapper card-img-top-wrapper">
+                  <img
+                    src="./assets/images/lesson_5/menu/Latte.png"
+                    class="card-img-top product-card__img"
+                    alt="Chai Latte cup"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Двойной Эспрессо</h3>
+                  <p class="card-text text-muted small mb-2 product-card__desc">
+                    Кофе 50% | Молоко 50%
+                  </p>
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 230руб </span>
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                    >
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Product Card: Flat White -->
+            <article class="col-12 col-md-6 col-lg-3">
+              <div class="card h-100 border-0 shadow-sm product-card">
+                <div class="product-card__img-wrapper card-img-top-wrapper">
+                  <img
+                    src="./assets/images/lesson_5/menu/Latte.png"
+                    class="card-img-top product-card__img"
+                    alt="Chai Latte cup"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="card-body product-card__body d-flex flex-column">
+                  <h3 class="card-title fw-bold text-dark product-card__title">Флэт Уайт</h3>
+                  <p class="card-text text-muted small mb-2 product-card__desc">
+                    Кофе 50% | Молоко 50%
+                  </p>
+
+                  <div class="mt-auto text-center">
+                    <span class="fw-bold d-block mb-0 product-card__price"> 190руб </span>
+                    <button
+                      type="button"
+                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
                     >
                       Order Now
                     </button>
@@ -238,11 +393,59 @@
           </div>
         </div>
       </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="about py-5 my-5">
+        <div class="about__text-block">
+          <h1 class="text-block__title">Чем мы отличаемся?</h1>
+          <p class="text-block__text">
+            Мы варим не просто кофе — мы создаём вам хорошее настроение на весь день.
+          </p>
+        </div>
+        <div class="about__card row container-fluid py-4">
+          <div class="card-item col-12 col-md-2">
+            <div class="card-item__img">
+              <img src="./assets/images/lesson_5/icons/badge 1.png" alt="" />
+            </div>
+            <div class="card-item__block">
+              <h2 class="block_title">Свежие зерна</h2>
+              <p class="block_text">Кофе с таким вкусом, какого вы ещё не пробовали.</p>
+            </div>
+          </div>
+          <div class="card-item col-12 col-md-2">
+            <div class="card-item__img">
+              <img src="./assets/images/lesson_5/icons/coffee-beans 1.png" alt="" />
+            </div>
+            <div class="card-item__block">
+              <h2 class="block_title">Высокое качество</h2>
+              <p class="block_text">Coffee like you have never tasted</p>
+            </div>
+          </div>
+          <div class="card-item col-12 col-md-2">
+            <div class="card-item__img">
+              <img src="./assets/images/lesson_5/icons/coffee-cup 1.png" alt="" />
+            </div>
+            <div class="card-item__block">
+              <h2 class="block_title">Большой выбор</h2>
+              <p class="block_text">Coffee like you have never tasted</p>
+            </div>
+          </div>
+          <div class="card-item col-12 col-md-2">
+            <div class="card-item__img">
+              <img src="./assets/images/lesson_5/icons/best-price 1.png" alt="" />
+            </div>
+            <div class="card-item__block">
+              <h2 class="block_title">Лучшие цены</h2>
+              <p class="block_text">Coffee like you have never tasted</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer (рекомендуется добавить) -->
+    <!-- Footer -->
     <footer class="footer py-3 text-center">
-      <p class="small text-muted">&copy; 2025 Bean Scene. All rights reserved.</p>
+      <p class="small text-muted mb-0">&copy; 2025 Bean Scene. All rights reserved.</p>
     </footer>
   </body>
 </html>

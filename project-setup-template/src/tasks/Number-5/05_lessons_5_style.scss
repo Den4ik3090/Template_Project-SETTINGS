@@ -1,35 +1,11 @@
-// ----- Переменные -----
-$layout-padding: 95px; // Ваше желаемое значение
-$mobile-padding: 20px; // Отступ для телефонов
-
-// ----- MIXIN для быстрого добавления отступов -----
-@mixin container-padding {
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
-}
 // ------------------------------------------------------------
-// FONTS
+// LAYOUT VARIABLES
 // ------------------------------------------------------------
-@font-face {
-  font-family: "DRUZHOK";
-  src: url(../../assets/fonts/DRUZHOK.otf);
-  font-display: swap; // Рекомендуется для быстрой отрисовки текста
-}
-
-@font-face {
-  font-family: "BEBAS";
-  src: url(../../assets/fonts/BebasNeue\ Regular.otf); // Убрал экранирование пробела, лучше переименовать файл без пробелов
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Clicker';
-  src: url(../../assets/fonts/ClickerScript-Regular.ttf);
-  font-display: swap;
-}
+$layout-padding: 95px;  // Отступы по бокам на десктопе
+$mobile-padding: 20px;  // Отступы по бокам на мобилках
 
 // ------------------------------------------------------------
-// VARIABLES (Цвета из вашего кода)
+// COLORS
 // ------------------------------------------------------------
 $color-brown-dark: #2b2019;
 $color-brown-text: #603809;
@@ -37,15 +13,42 @@ $color-white: #fff;
 $color-hover: rgba(155, 98, 98, 0.616);
 
 // ------------------------------------------------------------
+// MIXINS
+// ------------------------------------------------------------
+@mixin container-padding {
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
+}
+
+// ------------------------------------------------------------
+// FONTS
+// ------------------------------------------------------------
+@font-face {
+  font-family: "DRUZHOK";
+  src: url(../../assets/fonts/DRUZHOK.otf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BEBAS";
+  src: url(../../assets/fonts/BebasNeue\ Regular.otf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clicker";
+  src: url(../../assets/fonts/ClickerScript-Regular.ttf);
+  font-display: swap;
+}
+
+// ------------------------------------------------------------
 // GLOBAL / BASE
 // ------------------------------------------------------------
 body {
-  // Bootstrap сбрасывает margin/padding, но на всякий случай
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; // Фоллбек шрифт
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-// Сброс стандартных отступов контейнера bootstrap, если нужно как в макете
 .container-fluid {
   padding: 0;
 }
@@ -54,76 +57,117 @@ body {
 // HEADER & NAVBAR
 // ------------------------------------------------------------
 .header {
-  
-  padding: 0;
-  // Если хедер должен лежать поверх Hero (прозрачный), можно добавить:
   position: absolute;
   width: 100%;
   z-index: 10;
-  
-    @media (min-width: 992px) {
+  padding: 0;
+
+  @media (min-width: 992px) {
     padding-left: $layout-padding !important;
     padding-right: $layout-padding !important;
   }
-  
 }
-.nav{
+
+.nav {
   display: flex;
   justify-content: space-between;
-  align-items:start;
-  flex: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .navbar {
   padding-top: 20px;
   margin: 0;
-    // Bootstrap классы уже дают flex/justify, но можно продублировать, если нужно переопределить
-  // display: flex; justify-content: space-between; align-items: center;
- 
 
+                        &__logo-img {
+                          width: 150px;
+                      
+                          @media (min-width: 768px) {
+                            width: 200px;
+                          }
+                        }
+                      
+                        &__list {
+                          align-items: center;
+                        }
+                      
+                        &__link {
+                          font-family: "BEBAS", sans-serif;
+                          color: $color-white;
+                          font-size: 20px;
+                          font-weight: bold;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                          border-radius: 5px;
+                          transition: background-color 0.3s ease;
+                      
+                          &:hover {
+                            background-color: $color-hover;
+                            color: $color-white;
+                          }
+                        }
+                      
+                        &__btn {
+                          width: 100px;
+                          height: 48px;
+                          border-radius: 30px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        }
+}
 
-  &__logo-img {
-    width: 150px; 
-    @media (min-width: 768px) {
-      width: 200px;
-    }
-  }
+// ------------------------------------------------------------
+// BURGER & MOBILE MENU
+// ------------------------------------------------------------
+.burger {
+  width: 32px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
-  &__list {
-    
-    align-items: center;
-  }
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: $color-white;
+  border-radius: 999px;
+}
 
-  &__link {
-    // Было: .nav__link-item
-    // Стили теперь вешаем на ссылку (<a>), а не на <li>
-    font-family: "BEBAS", sans-serif;
+.navbar__menu-burger {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  padding-top: 120px;
+  background-color: rgba(255, 255, 255, 0.26);
+}
+
+.navbar__list-burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar__link_burger {
+  font-family: "BEBAS", sans-serif;
+  color: $color-white;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  align-content: center;
+
+  &:hover {
+    background-color: $color-hover;
     color: $color-white;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none; // Убираем подчеркивание
-    padding: 8px 16px;     // Добавляем область клика
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    &:hover {
-      background-color: $color-hover;
-      color: $color-white; // Чтобы цвет текста не менялся при наведении
-    }
-  }
-
-  // Отступ между пунктами меню лучше делать через gap в родителе (уже есть class="gap-3"),
-  // но если нужно именно margin-left:
-
-
-  &__btn {
-    // Было: .btn_nav
-    width: 100px;
-    height: 48px;
-    border-radius: 30px;
-    // Центровка текста внутри кнопки
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 
@@ -131,213 +175,278 @@ body {
 // HERO SECTION
 // ------------------------------------------------------------
 .hero {
-  // Было: .hero
-  // Логика фона
   background-color: $color-brown-dark;
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), 
-    url('../../assets/images/lesson_5/coffee_image.png');
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    url("../../assets/images/lesson_5/coffee_image.png");
   background-size: cover;
-  background-position: center; // Лучше center для мобильных
-  
-  // Высота
-  min-height: 100vh; // min-height лучше чем height, чтобы контент не обрезался на маленьких экранах
+  background-position: center;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; // Центрируем контент по вертикали
+  justify-content: center;
   color: $color-white;
-  
-  // Отступы по бокам (как в макете)
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
 
-    @media (min-width: 992px) {
-    padding-left: $layout-padding !important;
-    padding-right: $layout-padding !important;
-  }
-
-  &__content {
-    // Было: .container__left
-    // margin-top: 100px; // Убрал, так как используем flex центровку родителя
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  &__subtitle {
-    // Было: .container__text-logo
-    font-size: 18px;
-    color: $color-white;
-    margin: 0;
-
-    @media (min-width: 768px) {
-      font-size: 22px;
-    }
-  }
-
-  &__title {
-    // Было: .container__h1
-    font-family: 'Clicker', sans-serif;
-    line-height: 1; // Чтобы огромный шрифт не давал огромный отступ
-    
-    // Адаптивный размер шрифта
-    font-size: 100px; 
-    
-    @media (min-width: 768px) {
-      font-size: 150px;
-    }
-    @media (min-width: 1200px) {
-      font-size: 220px;
-    }
-  }
-
-  &__description {
-    // Было: .container__text
-    font-size: 16px;
-    max-width: 500px; // Ограничиваем ширину текста для читаемости
-  }
-
-  &__btn {
-    // Общие стили для кнопок в hero
-    padding: 10px 30px;
-    
-    &--secondary {
-      // Было: .hero .btn-outline-light
-      border-width: 2px;
-      border-radius: 30px; // Добавил скругление как у Sign in
-    }
-  }
+                        @media (min-width: 992px) {
+                          padding-left: $layout-padding !important;
+                          padding-right: $layout-padding !important;
+                        }
+                      
+                        &__content {
+                          display: flex;
+                          flex-direction: column;
+                          gap: 0;
+                        }
+                      
+                        &__subtitle {
+                          font-size: 18px;
+                          color: $color-white;
+                          margin: 0;
+                      
+                          @media (min-width: 768px) {
+                            font-size: 22px;
+                          }
+                        }
+                      
+                        &__title {
+                          font-family: "Clicker", sans-serif;
+                          line-height: 1;
+                          font-size: 100px;
+                      
+                          @media (min-width: 768px) {
+                            font-size: 150px;
+                          }
+                      
+                          @media (min-width: 1200px) {
+                            font-size: 220px;
+                          }
+                        }
+                      
+                        &__description {
+                          font-size: 16px;
+                          max-width: 500px;
+                        }
+                      
+                        &__btn {
+                          padding: 10px 30px;
+                      
+                          &--secondary {
+                            border-width: 2px;
+                            border-radius: 30px;
+                          }
+                        }
 }
 
 // ------------------------------------------------------------
-// DISCOVER SECTION (MAIN)
+// DISCOVER SECTION
 // ------------------------------------------------------------
+.img_blast {
+  height: 200px;
+  z-index: 100;
+  position: absolute;
+  margin-left: -10%;
+  margin-top: 250px;
+}
+
 .discover {
-  // Было: .main__block
   background-color: $color-white;
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
 
-  // Боковые отступы
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media (min-width: 992px) {
-    padding-left: 93px;
-    padding-right: 93px;
-  }
-
-
-  &__title {
-    // Было: .block__left-h1
-    font-size: 36px;
-    font-weight: bold;
-    color: $color-brown-text; // Предположил цвет
-    margin-bottom: 20px;
-  }
-
-  &__text {
-    // Было: .main__block-left-text
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-
-    @media (min-width: 768px) {
-      font-size: 20px;
-    }
-  }
-
-  &__btn {
-    // Было: .block__left-btn
-    width: 150px;
-    border-radius: 30px;
-  }
-
-  &__media {
-    // Обертка для картинки
-    margin-top: 40px;
-    @media (min-width: 768px) {
-      margin-top: 0;
-    }
-  }
-
-  &__img {
-    // Было: .cup-cofee
-    max-width: 100%; // Чтобы не вылезала за экран
-    height: auto;
-    
-    @media (min-width: 992px) {
-      width: 600px;
-      // margin-right: 100px; // Bootstrap col уже дает отступы, но можно оставить
-    }
-  }
-
-  // Если вы решите вернуть декоративную картинку (Coffee blast)
-  &__decor {
-    // Было: .left-img
-    position: absolute;
-    z-index: -1;
-    width: 300px;
-    
-    @media (min-width: 992px) {
-      width: 500px;
-      margin-top: -120px; // Подгонка позиции
-      margin-left: -50px;
-    }
-  }
+                        @media (min-width: 992px) {
+                          padding-left: 93px;
+                          padding-right: 93px;
+                        }
+                      
+                        &__title {
+                          font-size: 36px;
+                          font-weight: bold;
+                          color: $color-brown-text;
+                          margin-bottom: 20px;
+                        }
+                      
+                        &__text {
+                          font-size: 16px;
+                          line-height: 1.6;
+                          margin-bottom: 30px;
+                      
+                          @media (min-width: 768px) {
+                            font-size: 20px;
+                          }
+                        }
+                      
+                        &__btn {
+                          position: relative;
+                          z-index: 120;
+                          width: 150px;
+                          border-radius: 30px;
+                          cursor: pointer;
+                      
+                          &:active {
+                            background-color: red;
+                          }
+                        }
+                      
+                        &__media {
+                          margin-top: 40px;
+                      
+                          @media (min-width: 768px) {
+                            margin-top: 0;
+                          }
+                        }
+                      
+                        &__img {
+                          max-width: 100%;
+                          height: auto;
+                      
+                          @media (min-width: 992px) {
+                            width: 600px;
+                          }
+                        }
+                      
+                        &__decor {
+                          position: absolute;
+                          z-index: -1;
+                          width: 300px;
+                      
+                          @media (min-width: 992px) {
+                            width: 500px;
+                            margin-top: -120px;
+                            margin-left: -50px;
+                          }
+                        }
 }
 
 // ------------------------------------------------------------
 // MENU SECTION
 // ------------------------------------------------------------
 .menu {
-  // Было: .main__block-coffee
   padding-top: 50px;
   padding-bottom: 100px;
-  
-  &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 50px;
-  }
-
-  &__title {
-    // Было: .block-coffee__h1
-    font-weight: bold;
-    font-size: 36px;
-    color: $color-brown-text;
-    text-align: center;
-
-    @media (min-width: 768px) {
-      font-size: 54px;
-    }
-  }
-
-  &__subtitle {
-    // Было: .block-cofee_title
-    text-align: center;
-    font-size: 18px;
-    color: lighten($color-brown-dark, 20%);
+                      
+                        &__header {
+                          display: flex;
+                          flex-direction: column;
+                          gap: 10px;
+                          margin-bottom: 50px;
+                        }
+                      
+                        &__title {
+                          font-weight: bold;
+                          font-size: 36px;
+                          color: $color-brown-text;
+                          text-align: center;
+                      
+                          @media (min-width: 768px) {
+                            font-size: 54px;
+                          }
+                        }
+                      
+                        &__subtitle {
+                          text-align: center;
+                          font-size: 18px;
+                          color: lighten($color-brown-dark, 20%);
   }
 }
 
-// Стили карточек (дополнительно, чтобы красиво смотрелись)
-.product-card {
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
+.container > .menu__grid {
+  row-gap: 20px;
+}
 
-  &__img {
-    object-fit: contain;
-    height: 200px;
-    width: 100%;
-  }
-  
-  &__price {
-    font-size: 1.25rem;
-    color: $color-brown-text;
-  }
+// Карточки (усиливаем Bootstrap-стили)
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card {
+  transition: transform 0.3s ease-in-out;
+
+                      &:hover {
+                          transform: translateY(-5px);
+                        }
+
+                        &__img {
+                          object-fit: contain;
+                          height: 200px;
+                          width: 100%;
+                        }
+
+                        &__price {
+                          font-size: 1.25rem;
+                          color: $color-brown-text;
+                          text-shadow: 2px 2px 10px #2b2019;
+                          display: flex;
+                          justify-content: flex-end;
+                          padding-top: 20px;
+                          padding-bottom: 20px;
+                        }
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+
+// ------------------------------------------------------------
+// ABOUT SECTION
+// ------------------------------------------------------------
+
+.about{
+    padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
+}
+.about__text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__card {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.card-item {
+  align-items: center;
+  align-content: center;
+  background-color: #f9c06a38;
+  box-shadow: 10px 10px 50px gray;
+  margin: 10px;
+  border-radius: 20px;
+  border: 2px solid rgba(211, 211, 211, 0.658);
+
+                          &__block {
+                            display: flex;
+                            flex-direction: column;
+                            align-content: center;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 20px;
+                          }
+                        
+                          &__img {
+                            padding: 20px;
+                            display: flex;
+                            justify-content: center;
+                            align-content: center;
+                          }
+}
+
+.block_text {
+  padding: 0;
+  text-align: center;
+  font-size: 20px;
+  color: #707070;
+}
+
+.block_title {
+  margin-top: 10px;
+  font-size: 24px;
 }
