@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <meta name="description" content="Лучшая кофейня в городе. Свежий кофе и уютная атмосфера." />
     <title>Coffee Shop | Bean Scene</title>
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- HEADER -->
     <header class="header">
       <nav class="navbar container-fluid px-5 px-md-5 py-2 py-md-4">
@@ -152,250 +154,178 @@
             </p>
           </div>
 
-          <div class="row g-4 menu__grid">
-            <!-- Product Card: Cappuccino -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Cappuchino.png"
-                    class="card-img-top product-card__img"
-                    alt="Cappuccino cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Капучино</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 50% | Молоко 50%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 200руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
+          <!-- Swiper Slider Container -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1: Cappuccino -->
+              <div class="swiper-slide">
+                <article class="h-100">
+                  <div class="card h-100 border-0 shadow-sm product-card">
+                    <div class="product-card__img-wrapper card-img-top-wrapper">
+                      <img
+                        src="./assets/images/lesson_5/menu/Cappuchino.png"
+                        class="card-img-top product-card__img"
+                        alt="Cappuccino"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body product-card__body d-flex flex-column">
+                      <h3 class="card-title fw-bold text-dark product-card__title">Капучино</h3>
+                      <p class="card-text text-muted small mb-2 product-card__desc">
+                        Кофе 50% | Молоко 50%
+                      </p>
+                      <div class="mt-auto text-center">
+                        <span class="fw-bold d-block mb-0 product-card__price">200руб</span>
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                        >
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </article>
               </div>
-            </article>
 
-            <!-- Product Card: Hot Chocolate -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Latte.png"
-                    class="card-img-top product-card__img"
-                    alt="Chai Latte cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Горячий шоколад</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Эспрессо 40мл | Молоко 120мл
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 250руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
+              <!-- Slide 2: Hot Chocolate -->
+              <div class="swiper-slide">
+                <article class="h-100">
+                  <div class="card h-100 border-0 shadow-sm product-card">
+                    <div class="product-card__img-wrapper card-img-top-wrapper">
+                      <img
+                        src="./assets/images/lesson_5/menu/Latte.png"
+                        class="card-img-top product-card__img"
+                        alt="Hot Chocolate"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body product-card__body d-flex flex-column">
+                      <h3 class="card-title fw-bold text-dark product-card__title">
+                        Горячий шоколад
+                      </h3>
+                      <p class="card-text text-muted small mb-2 product-card__desc">
+                        Эспрессо 40мл | Молоко 120мл
+                      </p>
+                      <div class="mt-auto text-center">
+                        <span class="fw-bold d-block mb-0 product-card__price">250руб</span>
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                        >
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </article>
               </div>
-            </article>
 
-            <!-- Product Card: Macchiato -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Mockiato.png"
-                    class="card-img-top product-card__img"
-                    alt="Macchiato cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Макиато</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 70% | Молоко 30%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 300руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
+              <!-- Slide 3: Macchiato -->
+              <div class="swiper-slide">
+                <article class="h-100">
+                  <div class="card h-100 border-0 shadow-sm product-card">
+                    <div class="product-card__img-wrapper card-img-top-wrapper">
+                      <img
+                        src="./assets/images/lesson_5/menu/Mockiato.png"
+                        class="card-img-top product-card__img"
+                        alt="Macchiato"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body product-card__body d-flex flex-column">
+                      <h3 class="card-title fw-bold text-dark product-card__title">Макиато</h3>
+                      <p class="card-text text-muted small mb-2 product-card__desc">
+                        Кофе 70% | Молоко 30%
+                      </p>
+                      <div class="mt-auto text-center">
+                        <span class="fw-bold d-block mb-0 product-card__price">300руб</span>
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                        >
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </article>
               </div>
-            </article>
 
-            <!-- Product Card: Espresso -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Espresso.png"
-                    class="card-img-top product-card__img"
-                    alt="Espresso cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Эспрессо</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">Кофе 100%</p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 350руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
+              <!-- Slide 4: Espresso -->
+              <div class="swiper-slide">
+                <article class="h-100">
+                  <div class="card h-100 border-0 shadow-sm product-card">
+                    <div class="product-card__img-wrapper card-img-top-wrapper">
+                      <img
+                        src="./assets/images/lesson_5/menu/Espresso.png"
+                        class="card-img-top product-card__img"
+                        alt="Espresso"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body product-card__body d-flex flex-column">
+                      <h3 class="card-title fw-bold text-dark product-card__title">Эспрессо</h3>
+                      <p class="card-text text-muted small mb-2 product-card__desc">Кофе 100%</p>
+                      <div class="mt-auto text-center">
+                        <span class="fw-bold d-block mb-0 product-card__price">350руб</span>
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                        >
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </article>
               </div>
-            </article>
 
-            <!-- Product Card: Matcha -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Latte.png"
-                    class="card-img-top product-card__img"
-                    alt="Chai Latte cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Матча</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 50% | Молоко 50%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 200руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
+              <!-- Slide 5: Matcha -->
+              <div class="swiper-slide">
+                <article class="h-100">
+                  <div class="card h-100 border-0 shadow-sm product-card">
+                    <div class="product-card__img-wrapper card-img-top-wrapper">
+                      <img
+                        src="./assets/images/lesson_5/menu/Latte.png"
+                        class="card-img-top product-card__img"
+                        alt="Matcha"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body product-card__body d-flex flex-column">
+                      <h3 class="card-title fw-bold text-dark product-card__title">Матча</h3>
+                      <p class="card-text text-muted small mb-2 product-card__desc">
+                        Кофе 50% | Молоко 50%
+                      </p>
+                      <div class="mt-auto text-center">
+                        <span class="fw-bold d-block mb-0 product-card__price">200руб</span>
+                        <button
+                          type="button"
+                          class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
+                        >
+                          Order Now
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </article>
               </div>
-            </article>
+            </div>
 
-            <!-- Product Card: Latte -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Latte.png"
-                    class="card-img-top product-card__img"
-                    alt="Chai Latte cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Латте</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 50% | Молоко 50%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 180руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product Card: Double Espresso -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Latte.png"
-                    class="card-img-top product-card__img"
-                    alt="Chai Latte cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Двойной Эспрессо</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 50% | Молоко 50%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 230руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <!-- Product Card: Flat White -->
-            <article class="col-12 col-md-6 col-lg-3">
-              <div class="card h-100 border-0 shadow-sm product-card">
-                <div class="product-card__img-wrapper card-img-top-wrapper">
-                  <img
-                    src="./assets/images/lesson_5/menu/Latte.png"
-                    class="card-img-top product-card__img"
-                    alt="Chai Latte cup"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="card-body product-card__body d-flex flex-column">
-                  <h3 class="card-title fw-bold text-dark product-card__title">Флэт Уайт</h3>
-                  <p class="card-text text-muted small mb-2 product-card__desc">
-                    Кофе 50% | Молоко 50%
-                  </p>
-
-                  <div class="mt-auto text-center">
-                    <span class="fw-bold d-block mb-0 product-card__price"> 190руб </span>
-                    <button
-                      type="button"
-                      class="btn btn-warning btn-lg rounded-pill px-4 fw-bold text-dark product-card__btn mt-0"
-                    >
-                      Order Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </article>
+            <!-- Элементы управления -->
+            <div class="swiper-pagination"></div>
+            <!-- Точки снизу -->
+            <div class="swiper-button-next"></div>
+            <!-- Стрелка вправо -->
+            <div class="swiper-button-prev"></div>
+            <!-- Стрелка влево -->
           </div>
         </div>
       </section>
 
       <!-- ABOUT SECTION -->
-      <section class="about py-5 my-5">
+      <section class="about">
         <div class="about__text-block">
           <h1 class="text-block__title">Чем мы отличаемся?</h1>
           <p class="text-block__text">
@@ -403,43 +333,90 @@
           </p>
         </div>
         <div class="about__card row container-fluid py-4">
-          <div class="card-item col-12 col-md-2">
+          <div class="card-item col-12 col-md-3 p-md-0">
             <div class="card-item__img">
               <img src="./assets/images/lesson_5/icons/badge 1.png" alt="" />
             </div>
-            <div class="card-item__block">
+            <div class="card-item__block p-md-0">
               <h2 class="block_title">Свежие зерна</h2>
               <p class="block_text">Кофе с таким вкусом, какого вы ещё не пробовали.</p>
             </div>
           </div>
-          <div class="card-item col-12 col-md-2">
+          <div class="card-item col-12 col-md-3 p-md-0">
             <div class="card-item__img">
               <img src="./assets/images/lesson_5/icons/coffee-beans 1.png" alt="" />
             </div>
-            <div class="card-item__block">
+            <div class="card-item__block p-md-0">
               <h2 class="block_title">Высокое качество</h2>
               <p class="block_text">Coffee like you have never tasted</p>
             </div>
           </div>
-          <div class="card-item col-12 col-md-2">
+          <div class="card-item col-12 col-md-3 p-md-0">
             <div class="card-item__img">
               <img src="./assets/images/lesson_5/icons/coffee-cup 1.png" alt="" />
             </div>
-            <div class="card-item__block">
+            <div class="card-item__block p-md-0">
               <h2 class="block_title">Большой выбор</h2>
               <p class="block_text">Coffee like you have never tasted</p>
             </div>
           </div>
-          <div class="card-item col-12 col-md-2">
+          <div class="card-item col-12 col-md-3 p-md-0">
             <div class="card-item__img">
               <img src="./assets/images/lesson_5/icons/best-price 1.png" alt="" />
             </div>
-            <div class="card-item__block">
+            <div class="card-item__block p-md-0">
               <h2 class="block_title">Лучшие цены</h2>
               <p class="block_text">Coffee like you have never tasted</p>
             </div>
           </div>
+          <div class="text-block__bottom">
+            <p class="text-block__title-bottom m-0">
+              Great ideas start with great coffee, Lets help you achieve that
+            </p>
+            <h2 class="text-block__h2-bottom m-0">Get started today.</h2>
+          </div>
+          <button class="btn btn-warning text-block__bottom-btn">Join Us</button>
         </div>
+      </section>
+      <section class="breakfast">
+        <div class="container">
+          <!-- Добавляем выравнивание по центру для мобильных (text-center) и по левому краю для больших экранов (text-lg-start) -->
+          <div class="row justify-content-center justify-content-lg-start">
+            <!-- 
+        col-12: На мобильных (xs) полная ширина
+        col-sm-10: На больших телефонах чуть уже, чтобы были поля
+        col-md-8: На планшетах еще уже для читаемости
+        col-lg-6: На десктопах половина экрана
+      -->
+            <div
+              class="breakfast__text-block col-12 col-sm-10 col-md-8 col-lg-6 pt-3 pt-md-5 text-center text-lg-start"
+            >
+              <h1 class="breakfast__title display-5 fw-bold mb-3">
+                Get a chance to have an Amazing morning
+              </h1>
+
+              <p class="breakfast__text lead mb-4">
+                We are giving you are one time opportunity to experience a better life with coffee.
+              </p>
+
+              <button class="breakfast__btn btn btn-warning w-md-auto">Order Now</button>
+            </div>
+          </div>
+        </div>
+        <figure>
+          <img
+            src="./assets/images/lesson_5/coffee_bean.png"
+            alt="Coffee"
+            class="breakfast__bg-image"
+          />
+        </figure>
+        <figure>
+          <img
+            src="./assets/images/lesson_5/cup.png"
+            alt="Coffee"
+            class="breakfast__bg-image-cup d-none d-md-block"
+          />
+        </figure>
       </section>
     </main>
 

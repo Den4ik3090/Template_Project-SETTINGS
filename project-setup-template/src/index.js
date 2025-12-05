@@ -43,6 +43,7 @@ import './styles/main.scss';
 
 // Lesson-5
 import './tasks/Number-5/05_lessons_5';
+import './tasks/Number-5/05_swiper';
 import './tasks/Number-5/05_lessons_5_style.scss';
 
 /* ===========================================================

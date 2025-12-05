@@ -252,7 +252,7 @@ body {
 
 .discover {
   background-color: $color-white;
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 20px;
   padding-left: $mobile-padding;
   padding-right: $mobile-padding;
@@ -412,12 +412,58 @@ body {
   justify-content: center;
   margin: 0;
 }
+// -----------------------------SWIPER -------------------------------
+.mySwiper{
+  padding-bottom: 50px;
+}
+/* Изменяем цвет стрелок на ваш желтый (warning) */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffc107; /* Ваш цвет btn-warning */
+  width: 40px;    /* Ширина области клика */
+  height: 40px;   /* Высота области клика */
+  background: #333; /* Тёмный фон кружка (опционально) */
+  border-radius: 50%; /* Делаем круглыми */
+}
+
+/* Уменьшаем размер самой галочки внутри стрелки */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px; /* Размер иконки */
+  font-weight: bold;
+}
+
+/* Эффект при наведении */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #ffc107; /* Желтый фон */
+  color: #000;         /* Черная стрелка */
+  transition: all 0.3s ease;
+}
+/* Обычное состояние точки */
+.swiper-pagination-bullet {
+  margin-top: 10px;
+  width: 12px;          /* Ширина точки */
+  height: 12px;         /* Высота точки */
+  background: #ccc;     /* Серый цвет */
+  opacity: 1;           /* Полная непрозрачность */
+  margin: 0 6px !important; /* Расстояние между точками */
+}
+
+/* Активная точка (текущий слайд) */
+.swiper-pagination-bullet-active {
+  background: #ffc107;  /* Желтый цвет активной точки */
+  transform: scale(1.2); /* Чуть увеличиваем активную */
+}
+
+
+// -----------------------------------------------------------------------
 
 .card-item {
-  align-items: center;
-  align-content: center;
+
   background-color: #f9c06a38;
   box-shadow: 10px 10px 50px gray;
+  width: 400px;
   margin: 10px;
   border-radius: 20px;
   border: 2px solid rgba(211, 211, 211, 0.658);
@@ -425,10 +471,8 @@ body {
                           &__block {
                             display: flex;
                             flex-direction: column;
-                            align-content: center;
-                            align-items: center;
-                            justify-content: center;
-                            padding: 20px;
+                            
+                            
                           }
                         
                           &__img {
@@ -450,3 +494,96 @@ body {
   margin-top: 10px;
   font-size: 24px;
 }
+.text-block__bottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin-top: 20px;
+  font-size: 30px;
+  gap: 20px;
+}
+.text-block__bottom-btn{
+  width: 250px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+
+}
+
+//  Section BREAKFAST
+.breakfast{
+  position: relative;
+  overflow: hidden;
+  background-image:url(../../assets/images/lesson_5/Group\ 36.png);
+  height: 600px;
+  background-size: cover;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
+          
+            &__text-block{
+              z-index: 100;
+            //  margin-left: $layout-padding;
+                    padding-left: $mobile-padding;
+                    padding-right: $mobile-padding;
+                  @media (max-width: 767.98px) {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-content:center;
+                    align-items: center;
+                    margin-top: 100px;
+                    }
+
+                    }
+
+          &__title{
+                    font-size: 70px;
+                    font-weight: bolder;
+                    color:rgba(255, 255, 255, 0.582);
+                    @media (max-width: 767.98px) {
+                    font-size: 36px; 
+                    }
+                    }
+
+          &__text{
+                    font-size:30px ;
+                    color:white;
+                    @media (max-width: 767.98px) {
+                    font-size: 24px; 
+                    }
+                    }
+
+          &__btn{
+                    width: 250px;
+                    }
+}
+
+.breakfast__bg-image{
+  position: absolute;
+  z-index: 90;
+  background-size: contain;
+  transform: translateY(-40%);
+  top: 50%;
+  right: 0;
+  max-height: 90%;
+}
+.breakfast__bg-image-cup{
+    position: absolute;
+  z-index: 90;
+  background-size: contain;
+  transform: translateY(40%);
+  transform: translateX(-100%);
+  top: 15%;
+  right: 0;
+  max-height: 90%;
+  
+  //  @media ( <500px) {
+  //   display: none;
+  //  }
+
+}
+
+
