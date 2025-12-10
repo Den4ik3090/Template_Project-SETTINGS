@@ -20,6 +20,45 @@ $color-hover: rgba(155, 98, 98, 0.616);
   padding-right: $mobile-padding;
 }
 
+@mixin flex-setup(
+    $justify: false, 
+    $align: false, 
+    $direction: row
+) {
+    display: flex;
+    flex-direction: $direction;
+
+    @if $justify {
+        justify-content: center;
+    }
+
+    @if $align {
+        align-items: center;
+    }
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center;
+  flex-direction: column;     /* Центрирование по вертикали */
+}
+
+@mixin visually-hidden { 
+  position: absolute;
+  width: 1px;
+  height: 1px; 
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; 
+}
+
+@mixin tablet {
+  @media (min-width: 768px) 
+  { @content; } }
+
 // ------------------------------------------------------------
 // FONTS
 // ------------------------------------------------------------
@@ -42,7 +81,7 @@ $color-hover: rgba(155, 98, 98, 0.616);
 }
 
 // ------------------------------------------------------------
-// GLOBAL / BASE
+// Базовые стили
 // ------------------------------------------------------------
 body {
   margin: 0;
@@ -412,7 +451,7 @@ body {
   justify-content: center;
   margin: 0;
 }
-// -----------------------------SWIPER -------------------------------
+// ----SWIPER -------------------------------
 .mySwiper{
   padding-bottom: 50px;
 }
@@ -457,7 +496,7 @@ body {
 }
 
 
-// ---------------CARD-ITEM ---------------------------------
+// ------CARD-ITEM ---------------------------------
 
 .card-item {
 
@@ -586,4 +625,174 @@ body {
 
 }
 
+                    // FeedBack BLOCK
+.feedback {
+  @include center-flex;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
 
+
+                    &__title {
+                      padding-top: clamp(40px, 8vw, 82px);
+                      font-weight: bold;
+                      font-size: clamp(32px, 6vw, 54px);
+                      color: #603809;
+                      text-align: center;
+                    }
+
+                    /* Обёртка слайдера */
+                    &__slider {
+                      position: relative;
+                      max-width: 100%;
+                      width: 1200px;
+                      margin-top: clamp(30px, 6vw, 50px);
+
+                    }
+
+                    /* Контейнер для всех слайдов */
+                    &__blocks-container {
+                      position: relative;
+                      background-image: url(../../assets/images/lesson_5/отзывы.png);
+                      background-size:cover;
+                      background-position:center;
+                      width: 100%;
+                      border-radius: 20px;
+                      height: clamp(350px, 60vh, 525px);
+                      overflow: hidden;
+}
+
+                    /* Базовый слайд */
+                    &__block {
+                      position: absolute;
+                      inset: 0; /* top:0; right:0; bottom:0; left:0 */
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: flex-start;
+                      background-color: rgba(249, 192, 106, 0.055);
+                      border: 1px solid rgba(104, 56, 56, 0.493);
+                      border-radius: clamp(8px, 2vw, 10px);
+                      padding: 20px 0;
+                      opacity: 0;
+                      transform: translateX(100%);
+                      transition: all 0.5s ease-in-out;
+}
+
+                    /* Активный слайд */
+                    &__block--active {
+                      opacity: 1;
+                      transform: translateX(0);
+}
+
+                    /* Текст отзыва */
+                    &__block-text {
+                      width: 100%;
+                    padding-left: clamp(20px, 8vw, 100px);
+                    padding-right: clamp(20px, 8vw, 100px);
+                    line-height: clamp(24px, 5vw, 36px);
+                    font-size: clamp(18px, 4vw, 24px);
+                    text-align: center;
+                    background-color: rgba(75, 75, 75, 0.4);
+                    backdrop-filter: blur(50px);
+                    -webkit-backdrop-filter: blur(50px);
+                    color: rgb(255, 255, 255);
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    }
+
+                    /* Имя и должность */
+                    &__block-name {
+                    font-weight: bold;
+                    font-size: clamp(24px, 5vw, 36px);
+                    color: #fafafa;
+                    margin-top: 16px;
+                    }
+
+                  &__block-prof {
+                    font-size: clamp(16px, 3.5vw, 20px);
+                    line-height: clamp(20px, 4vw, 24px);
+                    margin-top: 4px;
+                    margin-bottom: clamp(20px, 4vw, 32px);
+                    color: white;
+                    }
+
+/* Фото */
+                    &__block-photo {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+}
+
+/* Кнопки слайдера */
+                    &__btn-left,
+                    &__btn-rigth {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: clamp(40px, 10vw, 60px);
+                    height: clamp(40px, 10vw, 60px);
+                    border-radius: 50%;
+                    background-color: rgba(243, 161, 67, 0.9);
+                    border: none;
+                    cursor: pointer;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 100;
+                    }
+
+                    &__btn-left {
+                    left: clamp(-30px, -4vw, 0px);
+                    }
+
+                    &__btn-rigth {
+                    right: clamp(-30px, -4vw, 0px);
+                    }
+
+                    &__btn-left:hover,
+                    &__btn-rigth:hover {
+                    transform: translateY(-50%) scale(1.05);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    }
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+  .feedback {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+                    &__btn-left,
+                    &__btn-rigth {
+                    width: 44px;
+                    height: 44px;
+                    }
+
+                    &__btn-left {
+                    left: 0;
+                    }
+
+                    &__btn-rigth {
+                    right: 0;
+                    }
+                    }
+
+/* Планшеты (769–1024) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .feedback {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* Большой десктоп (>1200px) */
+@media (min-width: 1200px) {
+  .feedback {
+  padding-left: 193px;
+  padding-right: 193px;
+  }
+}
+}
