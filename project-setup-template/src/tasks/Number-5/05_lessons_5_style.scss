@@ -1,67 +1,43 @@
-// ------------------------------------------------------------
-// LAYOUT VARIABLES
-// ------------------------------------------------------------
-$layout-padding: 95px;  // Отступы по бокам на десктопе
-$mobile-padding: 20px;  // Отступы по бокам на мобилках
+// ==========================================================================
+// 1. VARIABLES & CONFIG
+// ==========================================================================
 
-// ------------------------------------------------------------
-// COLORS
-// ------------------------------------------------------------
+// --- Colors ---
 $color-brown-dark: #2b2019;
 $color-brown-text: #603809;
 $color-white: #fff;
 $color-hover: rgba(155, 98, 98, 0.616);
+$color-accent: #ffc107; // Желтый акцент
 
-// ------------------------------------------------------------
-// MIXINS
-// ------------------------------------------------------------
-@mixin container-padding {
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
-}
+// --- Layout ---
+$layout-padding-desktop: 95px;
+$layout-padding-mobile: 20px;
+$max-width-container: 1200px;
 
-@mixin flex-setup(
-    $justify: false, 
-    $align: false, 
-    $direction: row
-) {
-    display: flex;
-    flex-direction: $direction;
+// ==========================================================================
+// 2. MIXINS
+// ==========================================================================
 
-    @if $justify {
-        justify-content: center;
-    }
-
-    @if $align {
-        align-items: center;
-    }
-}
-
-@mixin center-flex {
+@mixin center-flex($direction: row) {
   display: flex;
-  justify-content: center; /* Центрирование по горизонтали */
+  justify-content: center;
   align-items: center;
-  flex-direction: column;     /* Центрирование по вертикали */
+  flex-direction: $direction;
 }
 
-@mixin visually-hidden { 
-  position: absolute;
-  width: 1px;
-  height: 1px; 
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0; 
+@mixin container-padding {
+  padding-left: $layout-padding-mobile;
+  padding-right: $layout-padding-mobile;
+
+  @media (min-width: 992px) {
+    padding-left: $layout-padding-desktop;
+    padding-right: $layout-padding-desktop;
+  }
 }
 
-@mixin tablet {
-  @media (min-width: 768px) 
-  { @content; } }
-
-// ------------------------------------------------------------
-// FONTS
-// ------------------------------------------------------------
+// ==========================================================================
+// 3. FONTS
+// ==========================================================================
 @font-face {
   font-family: "DRUZHOK";
   src: url(../../assets/fonts/DRUZHOK.otf);
@@ -80,85 +56,75 @@ $color-hover: rgba(155, 98, 98, 0.616);
   font-display: swap;
 }
 
-// ------------------------------------------------------------
-// Базовые стили
-// ------------------------------------------------------------
+// ==========================================================================
+// 4. BASE STYLES
+// ==========================================================================
 body {
+  width: 100%;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden; /* Предотвращает горизонтальный скролл */
 }
 
 .container-fluid {
   padding: 0;
 }
 
-// ------------------------------------------------------------
-// HEADER & NAVBAR
-// ------------------------------------------------------------
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ==========================================================================
+// 5. COMPONENTS (Header, Navbar, Burger, Buttons)
+// ==========================================================================
+
+// --- Header ---
 .header {
   position: absolute;
   width: 100%;
   z-index: 10;
   padding: 0;
-
-  @media (min-width: 992px) {
-    padding-left: $layout-padding !important;
-    padding-right: $layout-padding !important;
-  }
+  @include container-padding;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
+// --- Navbar ---
 .navbar {
   padding-top: 20px;
   margin: 0;
+  
+  &__logo-img {
+    width: 150px;
+    @media (min-width: 768px) { width: 200px; }
+  }
 
-                        &__logo-img {
-                          width: 150px;
-                      
-                          @media (min-width: 768px) {
-                            width: 200px;
-                          }
-                        }
-                      
-                        &__list {
-                          align-items: center;
-                        }
-                      
-                        &__link {
-                          font-family: "BEBAS", sans-serif;
-                          color: $color-white;
-                          font-size: 20px;
-                          font-weight: bold;
-                          text-decoration: none;
-                          padding: 8px 16px;
-                          border-radius: 5px;
-                          transition: background-color 0.3s ease;
-                      
-                          &:hover {
-                            background-color: $color-hover;
-                            color: $color-white;
-                          }
-                        }
-                      
-                        &__btn {
-                          width: 100px;
-                          height: 48px;
-                          border-radius: 30px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        }
+  &__list {
+    align-items: center;
+  }
+
+  &__link {
+    font-family: "BEBAS", sans-serif;
+    color: $color-white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  &__btn {
+    width: 100px;
+    height: 48px;
+    border-radius: 30px;
+    @include center-flex;
+  }
 }
 
-// ------------------------------------------------------------
-// BURGER & MOBILE MENU
-// ------------------------------------------------------------
+// --- Burger Menu ---
 .burger {
   width: 32px;
   height: 24px;
@@ -169,14 +135,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-}
 
-.burger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: $color-white;
-  border-radius: 999px;
+  span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: $color-white;
+    border-radius: 999px;
+  }
 }
 
 .navbar__menu-burger {
@@ -194,25 +160,16 @@ body {
 }
 
 .navbar__link_burger {
-  font-family: "BEBAS", sans-serif;
-  color: $color-white;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  align-content: center;
-
-  &:hover {
-    background-color: $color-hover;
-    color: $color-white;
-  }
+  @extend .navbar__link; // Наследуем стили обычной ссылки
+  display: block;
+  text-align: center;
 }
 
-// ------------------------------------------------------------
-// HERO SECTION
-// ------------------------------------------------------------
+// ==========================================================================
+// 6. SECTIONS
+// ==========================================================================
+
+// --- Hero Section ---
 .hero {
   background-color: $color-brown-dark;
   background-image:
@@ -225,301 +182,314 @@ body {
   flex-direction: column;
   justify-content: center;
   color: $color-white;
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
+  @include container-padding;
 
-                        @media (min-width: 992px) {
-                          padding-left: $layout-padding !important;
-                          padding-right: $layout-padding !important;
-                        }
-                      
-                        &__content {
-                          display: flex;
-                          flex-direction: column;
-                          gap: 0;
-                        }
-                      
-                        &__subtitle {
-                          font-size: 18px;
-                          color: $color-white;
-                          margin: 0;
-                      
-                          @media (min-width: 768px) {
-                            font-size: 22px;
-                          }
-                        }
-                      
-                        &__title {
-                          font-family: "Clicker", sans-serif;
-                          line-height: 1;
-                          font-size: 100px;
-                      
-                          @media (min-width: 768px) {
-                            font-size: 150px;
-                          }
-                      
-                          @media (min-width: 1200px) {
-                            font-size: 220px;
-                          }
-                        }
-                      
-                        &__description {
-                          font-size: 16px;
-                          max-width: 500px;
-                        }
-                      
-                        &__btn {
-                          padding: 10px 30px;
-                      
-                          &--secondary {
-                            border-width: 2px;
-                            border-radius: 30px;
-                          }
-                        }
-}
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
 
-// ------------------------------------------------------------
-// DISCOVER SECTION
-// ------------------------------------------------------------
-.img_blast {
-  height: 200px;
-  z-index: 100;
-  position: absolute;
-  margin-left: -10%;
-  margin-top: 250px;
-}
+  &__subtitle {
+    font-size: clamp(18px, 4vw, 22px);
+    margin: 0;
+  }
 
-.discover {
-  background-color: $color-white;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
+  &__title {
+    font-family: "Clicker", sans-serif;
+    line-height: 1;
+    font-size: clamp(100px, 15vw, 220px); // Адаптивный шрифт
+  }
 
-                        @media (min-width: 992px) {
-                          padding-left: 93px;
-                          padding-right: 93px;
-                        }
-                      
-                        &__title {
-                          font-size: 36px;
-                          font-weight: bold;
-                          color: $color-brown-text;
-                          margin-bottom: 20px;
-                        }
-                      
-                        &__text {
-                          font-size: 16px;
-                          line-height: 1.6;
-                          margin-bottom: 30px;
-                      
-                          @media (min-width: 768px) {
-                            font-size: 20px;
-                          }
-                        }
-                      
-                        &__btn {
-                          position: relative;
-                          z-index: 120;
-                          width: 150px;
-                          border-radius: 30px;
-                          cursor: pointer;
-                      
-                          &:active {
-                            background-color: red;
-                          }
-                        }
-                      
-                        &__media {
-                          margin-top: 40px;
-                      
-                          @media (min-width: 768px) {
-                            margin-top: 0;
-                          }
-                        }
-                      
-                        &__img {
-                          max-width: 100%;
-                          height: auto;
-                      
-                          @media (min-width: 992px) {
-                            width: 600px;
-                          }
-                        }
-                      
-                        &__decor {
-                          position: absolute;
-                          z-index: -1;
-                          width: 300px;
-                      
-                          @media (min-width: 992px) {
-                            width: 500px;
-                            margin-top: -120px;
-                            margin-left: -50px;
-                          }
-                        }
-}
+  &__description {
+    font-size: 16px;
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
 
-// ------------------------------------------------------------
-// MENU SECTION
-// ------------------------------------------------------------
-.menu {
-  padding-top: 50px;
-  padding-bottom: 100px;
-                      
-                        &__header {
-                          display: flex;
-                          flex-direction: column;
-                          gap: 10px;
-                          margin-bottom: 50px;
-                        }
-                      
-                        &__title {
-                          font-weight: bold;
-                          font-size: 36px;
-                          color: $color-brown-text;
-                          text-align: center;
-                      
-                          @media (min-width: 768px) {
-                            font-size: 54px;
-                          }
-                        }
-                      
-                        &__subtitle {
-                          text-align: center;
-                          font-size: 18px;
-                          color: lighten($color-brown-dark, 20%);
+  &__btn {
+    width: auto;
+    max-width: 200px;
+    padding: 10px 30px;
+    
+    &--secondary {
+      font-weight: bolder;
+      border-width: 2px;
+      border-radius: 30px;
+    }
   }
 }
 
-.container > .menu__grid {
-  row-gap: 20px;
+// --- Discover Section ---
+.discover {
+  position: relative; // Для позиционирования декора
+  background-color: $color-white;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  @include container-padding;
+
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    color: $color-brown-text;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 120;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+
+    &:active {
+      background-color: red;
+    }
+  }
+
+  &__media {
+    margin-top: 40px;
+    position: relative;
+    @media (min-width: 768px) { margin-top: 0; }
+  }
+
+  &__img {
+    max-width: 100%;
+    height: auto;
+    @media (min-width: 992px) { width: 600px; }
+  }
+
+  &__decor {
+    position: absolute;
+    z-index: -1;
+    width: 300px;
+    @media (min-width: 992px) {
+      width: 500px;
+      margin-top: -120px;
+      margin-left: -50px;
+    }
+  }
 }
 
-// Карточки (усиливаем Bootstrap-стили)
-.card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+// Декоративные кляксы (Blast)
+.img_blast-discover {
+  position: absolute;
+  width: 300px;
+  left: 0;
+  transform: translateY(-90px);
+  z-index: 0;
+
+  @media (min-width: 576px) { width: 300px; }
+  @media (min-width: 992px) { 
+    width: 400px; 
+    transform: translateY(-80px);
+  }
+}
+.img_blast-discoverRight{
+  position: absolute;
+  width: 300px;
+ right: 0;
+  transform: scaleX(-1);
+  z-index: 10000;
+  top: 460px;
+  
+
+  @media (min-width: 576px) { width: 300px; }
+  @media (min-width: 992px) { 
+    width: 400px; 
+    transform: translateY(-180px);
+  }
 }
 
+.img-blast-right {
+  display: none; // Скрываем на мобильных
+  position: absolute;
+  right: 0;
+  width: 400px;
+  transform: rotate(180deg) translateY(-300px);
+
+  @media (min-width: 576px) { display: block; }
+}
+
+
+
+// --- Menu Section ---
+.menu {
+  padding-top: 50px;
+  padding-bottom: 100px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: clamp(36px, 5vw, 54px);
+    color: $color-brown-text;
+    text-align: center;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: lighten($color-brown-dark, 20%);
+  }
+
+  &__grid {
+    row-gap: 20px;
+  }
+}
+
+// Карточки меню
 .product-card {
   transition: transform 0.3s ease-in-out;
+  &:hover { transform: translateY(-5px); }
 
-                      &:hover {
-                          transform: translateY(-5px);
-                        }
+  &__img {
+    object-fit: contain;
+    height: 200px;
+    width: 100%;
+  }
 
-                        &__img {
-                          object-fit: contain;
-                          height: 200px;
-                          width: 100%;
-                        }
-
-                        &__price {
-                          font-size: 1.25rem;
-                          color: $color-brown-text;
-                          text-shadow: 2px 2px 10px #2b2019;
-                          display: flex;
-                          justify-content: flex-end;
-                          padding-top: 20px;
-                          padding-bottom: 20px;
-                        }
+  &__price {
+    font-size: 1.25rem;
+    color: $color-brown-text;
+    text-shadow: 2px 2px 10px #2b2019;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+  }
 }
 
-.card-img-top {
-  width: 100%;
-  height: auto;
+// --- Breakfast Section ---
+.breakfast {
+  position: relative;
+  overflow: hidden;
+  background-image: url(../../assets/images/lesson_5/Group\ 36.png);
+  height: 600px;
+  background-size: cover;
+  @include container-padding;
+
+  &__text-block {
+    z-index: 100;
+    position: relative;
+    
+    @media (max-width: 767.98px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: clamp(36px, 8vw, 70px);
+    font-weight: bolder;
+    color: rgba(255, 255, 255, 0.582);
+  }
+
+  &__text {
+    font-size: clamp(24px, 4vw, 30px);
+    color: white;
+  }
+
+  &__btn {
+    width: 250px;
+  }
+
+  &__bg-image {
+    position: absolute;
+    z-index: 90;
+    transform: translateY(-40%);
+    top: 50%;
+    right: 0;
+    max-height: 90%;
+  }
+
+  &__bg-image-cup {
+    position: absolute;
+    z-index: 90;
+    transform: translateY(40%) translateX(-100%);
+    top: 15%;
+    right: 0;
+    max-height: 90%;
+  }
 }
 
-// ------------------------------------------------------------
-// ABOUT SECTION
-// ------------------------------------------------------------
+// --- About Section & Swiper ---
+.about {
+  @include container-padding;
+  
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.about{
-    padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
-}
-.about__text-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  &__card {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
 }
 
-.about__card {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-// ----SWIPER -------------------------------
-.mySwiper{
+// Swiper Customization
+.mySwiper {
   padding-bottom: 50px;
 }
-/* Изменяем цвет стрелок на ваш желтый (warning) */
+
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ffc107; /* Ваш цвет btn-warning */
-  width: 40px;    /* Ширина области клика */
-  height: 40px;   /* Высота области клика */
-  background: #333; /* Тёмный фон кружка (опционально) */
-  border-radius: 50%; /* Делаем круглыми */
+  color: $color-accent;
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+  
+  &::after { font-size: 18px; font-weight: bold; }
+  
+  &:hover {
+    background: $color-accent;
+    color: #000;
+    transition: all 0.3s ease;
+  }
 }
 
-/* Уменьшаем размер самой галочки внутри стрелки */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 18px; /* Размер иконки */
-  font-weight: bold;
-}
-
-/* Эффект при наведении */
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background: #ffc107; /* Желтый фон */
-  color: #000;         /* Черная стрелка */
-  transition: all 0.3s ease;
-}
-/* Обычное состояние точки */
 .swiper-pagination-bullet {
-  margin-top: 10px;
-  width: 12px;          /* Ширина точки */
-  height: 12px;         /* Высота точки */
-  background: #ccc;     /* Серый цвет */
-  opacity: 1;           /* Полная непрозрачность */
-  margin: 0 6px !important; /* Расстояние между точками */
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  opacity: 1;
+  &-active {
+    background: $color-accent;
+    transform: scale(1.2);
+  }
 }
 
-/* Активная точка (текущий слайд) */
-.swiper-pagination-bullet-active {
-  background: #ffc107;  /* Желтый цвет активной точки */
-  transform: scale(1.2); /* Чуть увеличиваем активную */
-}
-
-
-// ------CARD-ITEM ---------------------------------
-
+// Card Item (About)
 .card-item {
-
   background-color: #f9c06a38;
   box-shadow: 10px 10px 50px gray;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   margin: 10px;
   border-radius: 20px;
   border: 2px solid rgba(211, 211, 211, 0.658);
 
-                          &__block {
-                            display: flex;
-                            flex-direction: column;
-                            
-                            
-                          }
-                        
-                          &__img {
-                            padding: 20px;
-                            display: flex;
-                            justify-content: center;
-                            align-content: center;
-                          }
+  &__img {
+    padding: 20px;
+    @include center-flex;
+  }
 }
 
 .block_text {
@@ -533,266 +503,349 @@ body {
   margin-top: 10px;
   font-size: 24px;
 }
-.text-block__bottom{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
+
+.text-block__bottom {
+  @include center-flex(column);
   margin-top: 20px;
   font-size: 30px;
   gap: 20px;
+  
+  &-btn {
+    width: 250px;
+    height: 50px;
+    @include center-flex(column);
+  }
 }
-.text-block__bottom-btn{
+
+// --- Feedback Section ---
+.feedback {
+  @include center-flex(column);
+  @include container-padding;
+
+  &__title {
+    padding-top: clamp(40px, 8vw, 82px);
+    font-weight: bold;
+    font-size: clamp(32px, 6vw, 54px);
+    color: #603809;
+    text-align: center;
+  }
+
+  &__slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: clamp(30px, 6vw, 50px);
+  }
+
+  &__blocks-container {
+    position: relative;
+    background-image: url(../../assets/images/lesson_5/отзывы.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-radius: 20px;
+    height: clamp(350px, 60vh, 525px);
+    overflow: hidden;
+  }
+
+  &__block {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+
+    &--active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__block-text {
+    width: 100%;
+    padding: 0 clamp(20px, 8vw, 100px);
+    font-size: clamp(18px, 4vw, 24px);
+    text-align: center;
+    background-color: rgba(75, 75, 75, 0.4);
+    backdrop-filter: blur(50px);
+    color: #fff;
+    flex-grow: 1;
+    @include center-flex;
+  }
+
+  &__block-name {
+    font-weight: bold;
+    font-size: clamp(24px, 5vw, 36px);
+    color: #fafafa;
+    margin-top: 16px;
+  }
+
+  &__block-prof {
+    font-size: clamp(16px, 3.5vw, 20px);
+    color: white;
+    margin-bottom: clamp(20px, 4vw, 32px);
+  }
+
+  &__block-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  // Кнопки навигации отзывов
+  &__btn-left,
+  &__btn-rigth {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    border-radius: 50%;
+    background-color: rgba(243, 161, 67, 0.9);
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 24px;
+    font-weight: bolder;
+    @include center-flex;
+    transition: transform 0.2s;
+
+    &:hover { transform: translateY(-50%) scale(1.1); }
+  }
+
+  &__btn-left { left: clamp(-30px, -4vw, 0px); }
+  &__btn-rigth { right: clamp(-30px, -4vw, 0px); }
+  
+  // Адаптация кнопок для мобильных внутри слайдера
+  @media (max-width: 768px) {
+    &__btn-left { left: 10px; }
+    &__btn-rigth { right: 10px; }
+  }
+}
+.img-blast-left{
+  position: absolute;
+  left: 0;
+  transform: translateY(-130px);
   width: 250px;
-  height: 50px;
+      @media (min-width: 768px){
+        width: 400px;
+      }
+}
+
+// --- Subscribe Section ---
+.subscribe-section {
+  width: 100%;
+  min-height: 400px;
+  margin-top: 70px;
+  @include center-flex(column);
+  padding: 60px $layout-padding-mobile;
+  background-image: url(../../assets/images/lesson_5/bgSubscribe.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.subscribe {
+  &__block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: clamp(24px, 5vw, 42px);
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: rgba(245, 245, 245, 0.8);
+    font-size: clamp(14px, 4vw, 18px);
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  &__block-input {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    padding: 0 25px;
+    font-size: 16px;
+    
+    @media (min-width: 768px) { width: 650px; }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3);
+    }
+  }
+
+  &__btn-input {
+    width: 100%;
+    height: 60px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) { width: auto; min-width: 180px; }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    }
+  }
+}
+
+// ==========================================================================
+// 7. FOOTER
+// ==========================================================================
+.footer {
+  width: 100%;
+  position: relative;
+  
+  // Mobile Layout
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items:center;
+  align-items: center;
+  text-align: center;
+  gap: 50px;
+  padding: 50px $layout-padding-mobile 72px;
 
-}
-
-//  Section BREAKFAST
-.breakfast{
-  position: relative;
-  overflow: hidden;
-  background-image:url(../../assets/images/lesson_5/Group\ 36.png);
-  height: 600px;
+  // Background
+  background-image:
+    url(../../assets/images/lesson_5/Rectangle\ 7.png),
+    url(../../assets/images/lesson_5/fotter_image.png);
+  background-position: center;
   background-size: cover;
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
-          
-            &__text-block{
-              z-index: 100;
-            //  margin-left: $layout-padding;
-                    padding-left: $mobile-padding;
-                    padding-right: $mobile-padding;
-                  @media (max-width: 767.98px) {
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: column;
-                    align-content:center;
-                    align-items: center;
-                    margin-top: 100px;
-                    }
+  background-blend-mode: multiply;
 
-                    }
-
-          &__title{
-                    font-size: 70px;
-                    font-weight: bolder;
-                    color:rgba(255, 255, 255, 0.582);
-                    @media (max-width: 767.98px) {
-                    font-size: 36px; 
-                    }
-                    }
-
-          &__text{
-                    font-size:30px ;
-                    color:white;
-                    @media (max-width: 767.98px) {
-                    font-size: 24px; 
-                    }
-                    }
-
-          &__btn{
-                    width: 250px;
-                    }
-}
-
-.breakfast__bg-image{
-  position: absolute;
-  z-index: 90;
-  background-size: contain;
-  transform: translateY(-40%);
-  top: 50%;
-  right: 0;
-  max-height: 90%;
-}
-.breakfast__bg-image-cup{
-    position: absolute;
-  z-index: 90;
-  background-size: contain;
-  transform: translateY(40%);
-  transform: translateX(-100%);
-  top: 15%;
-  right: 0;
-  max-height: 90%;
-
-  //  @media ( <500px) {
-  //   display: none;
-  //  }
-
-}
-
-                    // FeedBack BLOCK
-.feedback {
-  @include center-flex;
-  padding-left: $mobile-padding;
-  padding-right: $mobile-padding;
-
-
-                    &__title {
-                      padding-top: clamp(40px, 8vw, 82px);
-                      font-weight: bold;
-                      font-size: clamp(32px, 6vw, 54px);
-                      color: #603809;
-                      text-align: center;
-                    }
-
-                    /* Обёртка слайдера */
-                    &__slider {
-                      position: relative;
-                      max-width: 100%;
-                      width: 1200px;
-                      margin-top: clamp(30px, 6vw, 50px);
-
-                    }
-
-                    /* Контейнер для всех слайдов */
-                    &__blocks-container {
-                      position: relative;
-                      background-image: url(../../assets/images/lesson_5/отзывы.png);
-                      background-size:cover;
-                      background-position:center;
-                      width: 100%;
-                      border-radius: 20px;
-                      height: clamp(350px, 60vh, 525px);
-                      overflow: hidden;
-}
-
-                    /* Базовый слайд */
-                    &__block {
-                      position: absolute;
-                      inset: 0; /* top:0; right:0; bottom:0; left:0 */
-                      display: flex;
-                      flex-direction: column;
-                      align-items: center;
-                      justify-content: flex-start;
-                      background-color: rgba(249, 192, 106, 0.055);
-                      border: 1px solid rgba(104, 56, 56, 0.493);
-                      border-radius: clamp(8px, 2vw, 10px);
-                      padding: 20px 0;
-                      opacity: 0;
-                      transform: translateX(100%);
-                      transition: all 0.5s ease-in-out;
-}
-
-                    /* Активный слайд */
-                    &__block--active {
-                      opacity: 1;
-                      transform: translateX(0);
-}
-
-                    /* Текст отзыва */
-                    &__block-text {
-                      width: 100%;
-                    padding-left: clamp(20px, 8vw, 100px);
-                    padding-right: clamp(20px, 8vw, 100px);
-                    line-height: clamp(24px, 5vw, 36px);
-                    font-size: clamp(18px, 4vw, 24px);
-                    text-align: center;
-                    background-color: rgba(75, 75, 75, 0.4);
-                    backdrop-filter: blur(50px);
-                    -webkit-backdrop-filter: blur(50px);
-                    color: rgb(255, 255, 255);
-                    flex-grow: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    }
-
-                    /* Имя и должность */
-                    &__block-name {
-                    font-weight: bold;
-                    font-size: clamp(24px, 5vw, 36px);
-                    color: #fafafa;
-                    margin-top: 16px;
-                    }
-
-                  &__block-prof {
-                    font-size: clamp(16px, 3.5vw, 20px);
-                    line-height: clamp(20px, 4vw, 24px);
-                    margin-top: 4px;
-                    margin-bottom: clamp(20px, 4vw, 32px);
-                    color: white;
-                    }
-
-/* Фото */
-                    &__block-photo {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 50%;
-                    object-fit: cover;
-}
-
-/* Кнопки слайдера */
-                    &__btn-left,
-                    &__btn-rigth {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: clamp(40px, 10vw, 60px);
-                    height: clamp(40px, 10vw, 60px);
-                    border-radius: 50%;
-                    background-color: rgba(243, 161, 67, 0.9);
-                    border: none;
-                    cursor: pointer;
-                    transition: transform 0.2s ease, box-shadow 0.2s ease;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 100;
-                    }
-
-                    &__btn-left {
-                    left: clamp(-30px, -4vw, 0px);
-                    }
-
-                    &__btn-rigth {
-                    right: clamp(-30px, -4vw, 0px);
-                    }
-
-                    &__btn-left:hover,
-                    &__btn-rigth:hover {
-                    transform: translateY(-50%) scale(1.05);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                    }
-
-/* Мобильные устройства (до 768px) */
-@media (max-width: 768px) {
-  .feedback {
-    padding-left: 20px;
-    padding-right: 20px;
+  // Desktop Layout
+  @media (min-width: 992px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    padding: 120px 93px 72px;
   }
-                    &__btn-left,
-                    &__btn-rigth {
-                    width: 44px;
-                    height: 44px;
-                    }
 
-                    &__btn-left {
-                    left: 0;
-                    }
-
-                    &__btn-rigth {
-                    right: 0;
-                    }
-                    }
-
-/* Планшеты (769–1024) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .feedback {
-    padding-left: 80px;
-    padding-right: 80px;
+  // Общие стили текста
+  h2 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: "Clicker", sans-serif;
+    font-size: 28px;
   }
-}
 
-/* Большой десктоп (>1200px) */
-@media (min-width: 1200px) {
-  .feedback {
-  padding-left: 193px;
-  padding-right: 193px;
+  a {
+    color: #fff;
+    transition: color 0.2s;
+    &:hover {
+      color: $color-accent;
+      text-decoration: underline;
+    }
   }
-}
+
+  // Левая колонка
+  &__block-left {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: 992px) { align-items: flex-start; max-width: 400px; }
+  }
+
+  .navbar__logo-img {
+    width: 180px;
+    margin-bottom: 20px;
+  }
+
+  .block-left__text {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .block-left_icon {
+    display: flex;
+    gap: 20px;
+    .footer_icon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      &:hover { transform: scale(1.1); }
+    }
+  }
+
+  // Правая колонка
+  &__block-right {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap; // Для переноса на очень узких
+    justify-content: flex-start;
+    gap: 30px;
+    
+    @media (min-width: 768px) { justify-content: space-around; }
+    @media (min-width: 1200px) { width: auto; gap: 80px; margin-right: 100px; }
+  }
+
+  // Списки
+  &__list {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // Чашки (только десктоп)
+  &-img__cup-left,
+  &-img__cup-right {
+    display: none;
+    pointer-events: none;
+
+    @media (min-width: 1400px) {
+      display: block;
+      position: absolute;
+      width: 250px;
+      top: 50%;
+    }
+  }
+
+  &-img__cup-left {
+    left: 0;
+    transform: translateY(-150%);
+    z-index: 1;
+  }
+
+  &-img__cup-right {
+    right: 0;
+    transform: scaleX(-1) translateY(-50%);
+  }
 }
